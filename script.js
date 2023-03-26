@@ -1,7 +1,7 @@
 const button = document.querySelector(".button");
 const winner = document.querySelector(".winner");
 // A regEx to accept input only for rock paper and scissors:
-const inputReg = /^([rR]ock|[pP]aper|[sS]cissors)$/;
+const inputReg = /^(Rock|Paper|Scissors)$/;
 
 button.addEventListener("click", () => {
   const userChoice = capitalize(prompt("Choose your weapon:", ""));
@@ -65,5 +65,6 @@ function game(playerSelection, computerSelection) {
 
 // Capitalize the first letter of your input:
 function capitalize(str) {
+  str = str.toLowerCase();
   return str.charAt(0).toUpperCase() + str.substring(1);
 }
