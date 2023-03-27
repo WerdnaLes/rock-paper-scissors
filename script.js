@@ -1,6 +1,7 @@
-const playBtn = document.querySelector(".playBtn");
+const playBtn = document.querySelectorAll(".playBtn");
 const resetBtn = document.querySelector(".resetBtn");
 const conditions = document.querySelector(".conditions");
+const header = document.querySelector('.btn-container-header')
 const winner = document.querySelector(".winner");
 const score = document.querySelector(".score");
 // A regEx to accept input only for rock paper and scissors:
@@ -9,15 +10,18 @@ let playerScore = 0;
 let computerScore = 0;
 
 // Play button listener:
-playBtn.addEventListener("click", () => {
-  const userChoice = capitalize(prompt("Choose your weapon:", ""));
-  //Check if input matches the regEx:
-  if (!inputReg.test(userChoice)) {
-    alert("You can only choose from 'Rock', 'Paper', 'Scissors'");
-    winner.textContent = "";
-    return;
-  }
-  playRound(userChoice, getComputerChoice());
+playBtn.forEach((element) => {
+  element.addEventListener("click", (event) => {
+    // const userChoice = capitalize(prompt("Choose your weapon:", ""));
+    const userChoice = element.textContent;
+    //Check if input matches the regEx:
+    // if (!inputReg.test(userChoice)) {
+    //   alert("You can only choose from 'Rock', 'Paper', 'Scissors'");
+    //   winner.textContent = "";
+    //   return;
+    // }
+    playRound(userChoice, getComputerChoice());
+  });
 });
 
 //Reset button listener:
@@ -33,7 +37,9 @@ function winCondition(winText) {
   if (isGameOver === 5) {
     // alert(winnerName());
     winner.textContent = winnerName();
-    playBtn.classList.add("gameOver");
+    playBtn.forEach((element) => {
+      element.classList.add("gameOver");
+    });
     resetBtn.classList.add("resetActive");
   }
 
@@ -93,11 +99,15 @@ function playRound(playerSelection, computerSelection) {
 
 // Reset game score and empty the fields:
 function resetGame() {
-  winner.textContent = "";
+  winner.textContent = "Choose Your Weapon:";
   score.textContent = "";
   conditions.textContent = "";
   playerScore = computerScore = 0;
-  playBtn.classList.remove("gameOver");
+
+  playBtn.forEach((element) => {
+    element.classList.remove("gameOver");
+  });
+  // playBtn.classList.remove("gameOver");
   resetBtn.classList.remove("resetActive");
 }
 
