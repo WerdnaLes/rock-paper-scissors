@@ -18,9 +18,16 @@ playBtn.addEventListener("click", () => {
   playRound(userChoice, getComputerChoice());
 });
 
+resetBtn.addEventListener("click", resetGame);
+
 function winCondition(winText) {
+  const isGameOver = playerScore + computerScore;
   winner.textContent = winText;
   score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+  if (isGameOver === 5) {
+    alert(winnerName());
+    playBtn.classList.add("gameOver");
+  }
 
   // Inserts a new element after a particular element:
   //   newEl.style.display="block"
@@ -71,16 +78,23 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {}
-
 function resetGame() {
   winner.textContent = "";
   score.textContent = "";
   playerScore = computerScore = 0;
+  playBtn.classList.remove("gameOver");
 }
 
 // Capitalize the first letter of your input:
 function capitalize(str) {
   str = str.toLowerCase();
   return str.charAt(0).toUpperCase() + str.substring(1);
+}
+
+function winnerName() {
+  if (playerScore > computerScore) {
+    return "You won!";
+  } else {
+    return "Computer won!";
+  }
 }

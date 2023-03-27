@@ -30,6 +30,11 @@ body {
   border-radius: 20px;
 }
 
+.gameOver {
+  display: none;
+  pointer-events: none;
+}
+
 .resetBtn {
   padding: 5px 15px;
   margin-bottom: 10px;
