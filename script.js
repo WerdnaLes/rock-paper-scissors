@@ -1,8 +1,7 @@
 const playBtn = document.querySelectorAll(".playBtn");
 const resetBtn = document.querySelector(".resetBtn");
 const conditions = document.querySelector(".conditions");
-const header = document.querySelector('.btn-container-header')
-const winner = document.querySelector(".winner");
+const header = document.querySelector(".btn-container-header");
 const score = document.querySelector(".score");
 // A regEx to accept input only for rock paper and scissors:
 const inputReg = /^(Rock|Paper|Scissors)$/;
@@ -12,8 +11,8 @@ let computerScore = 0;
 // Play button listener:
 playBtn.forEach((element) => {
   element.addEventListener("click", (event) => {
-    // const userChoice = capitalize(prompt("Choose your weapon:", ""));
     const userChoice = element.textContent;
+    // const userChoice = capitalize(prompt("Choose your weapon:", ""));
     //Check if input matches the regEx:
     // if (!inputReg.test(userChoice)) {
     //   alert("You can only choose from 'Rock', 'Paper', 'Scissors'");
@@ -30,13 +29,11 @@ resetBtn.addEventListener("click", resetGame);
 //Check the score and stop the game if the score reached 5:
 function winCondition(winText) {
   const isGameOver = playerScore + computerScore;
-  winner.textContent = winText;
-  score.innerHTML = `You: ${playerScore}, Computer: ${computerScore}`
-    .replace("You", "<strong>You</strong>")
-    .replace("Computer", "<strong>Computer</strong>");
+  header.textContent = winText;
+  score.innerHTML = `<strong>You:</strong> ${playerScore}, <strong>Computer:</strong> ${computerScore}`;
   if (isGameOver === 5) {
     // alert(winnerName());
-    winner.textContent = winnerName();
+    header.textContent = winnerName();
     playBtn.forEach((element) => {
       element.classList.add("gameOver");
     });
@@ -64,10 +61,7 @@ function getComputerChoice() {
 // Play a game round:
 function playRound(playerSelection, computerSelection) {
   //Display Player and computer choices:
-  conditions.innerHTML =
-    `You: ${playerSelection}, Computer: ${computerSelection}`
-      .replace("You", "<strong>You</strong>")
-      .replace("Computer", "<strong>Computer</strong>");
+  conditions.innerHTML = `<strong>You:</strong> ${playerSelection}<br> <strong>Computer:</strong> ${computerSelection}`;
   if (playerSelection === "Paper") {
     if (computerSelection === "Rock") {
       playerScore++;
@@ -99,7 +93,7 @@ function playRound(playerSelection, computerSelection) {
 
 // Reset game score and empty the fields:
 function resetGame() {
-  winner.textContent = "Choose Your Weapon:";
+  header.textContent = "Choose Your Weapon:";
   score.textContent = "";
   conditions.textContent = "";
   playerScore = computerScore = 0;
@@ -107,7 +101,6 @@ function resetGame() {
   playBtn.forEach((element) => {
     element.classList.remove("gameOver");
   });
-  // playBtn.classList.remove("gameOver");
   resetBtn.classList.remove("resetActive");
 }
 
