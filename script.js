@@ -1,5 +1,6 @@
 const playBtn = document.querySelector(".playBtn");
 const resetBtn = document.querySelector(".resetBtn");
+const conditions = document.querySelector(".conditions");
 const winner = document.querySelector(".winner");
 const score = document.querySelector(".score");
 // A regEx to accept input only for rock paper and scissors:
@@ -7,6 +8,7 @@ const inputReg = /^(Rock|Paper|Scissors)$/;
 let playerScore = 0;
 let computerScore = 0;
 
+// Play button listener:
 playBtn.addEventListener("click", () => {
   const userChoice = capitalize(prompt("Choose your weapon:", ""));
   //Check if input matches the regEx:
@@ -18,15 +20,21 @@ playBtn.addEventListener("click", () => {
   playRound(userChoice, getComputerChoice());
 });
 
+//Reset button listener:
 resetBtn.addEventListener("click", resetGame);
 
+//Check the score and stop the game if the score reached 5:
 function winCondition(winText) {
   const isGameOver = playerScore + computerScore;
   winner.textContent = winText;
-  score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+  score.innerHTML = `You: ${playerScore}, Computer: ${computerScore}`
+    .replace("You", "<strong>You</strong>")
+    .replace("Computer", "<strong>Computer</strong>");
   if (isGameOver === 5) {
-    alert(winnerName());
+    // alert(winnerName());
+    winner.textContent = winnerName();
     playBtn.classList.add("gameOver");
+    resetBtn.classList.add("resetActive");
   }
 
   // Inserts a new element after a particular element:
@@ -49,40 +57,48 @@ function getComputerChoice() {
 
 // Play a game round:
 function playRound(playerSelection, computerSelection) {
+  //Display Player and computer choices:
+  conditions.innerHTML =
+    `You: ${playerSelection}, Computer: ${computerSelection}`
+      .replace("You", "<strong>You</strong>")
+      .replace("Computer", "<strong>Computer</strong>");
   if (playerSelection === "Paper") {
     if (computerSelection === "Rock") {
       playerScore++;
-      winCondition("Player won! Paper beats Rock!");
+      winCondition("Paper beats Rock!");
     } else if (computerSelection === "Scissors") {
       computerScore++;
-      winCondition("Computer won! Scissors beat Paper!");
+      winCondition("Scissors beat Paper!");
     } else winCondition("tie!");
   }
   if (playerSelection === "Rock") {
     if (computerSelection === "Scissors") {
       playerScore++;
-      winCondition("Player won! Rock beats Scissors!");
+      winCondition("Rock beats Scissors!");
     } else if (computerSelection === "Paper") {
       computerScore++;
-      winCondition("Computer won! Paper beats Rock!");
+      winCondition("Paper beats Rock!");
     } else winCondition("tie!");
   }
   if (playerSelection === "Scissors") {
     if (computerSelection === "Paper") {
       playerScore++;
-      winCondition("Player won! Scissors beat Paper!");
+      winCondition("Scissors beat Paper!");
     } else if (computerSelection === "Rock") {
       computerScore++;
-      winCondition("Computer won! Rock beats Scissors!");
+      winCondition("Rock beats Scissors!");
     } else winCondition("tie!");
   }
 }
 
+// Reset game score and empty the fields:
 function resetGame() {
   winner.textContent = "";
   score.textContent = "";
+  conditions.textContent = "";
   playerScore = computerScore = 0;
   playBtn.classList.remove("gameOver");
+  resetBtn.classList.remove("resetActive");
 }
 
 // Capitalize the first letter of your input:
@@ -91,6 +107,7 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.substring(1);
 }
 
+// Get a winner if the score reached 5:
 function winnerName() {
   if (playerScore > computerScore) {
     return "You won!";
