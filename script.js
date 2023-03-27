@@ -1,9 +1,13 @@
-const button = document.querySelector(".button");
+const playBtn = document.querySelector(".playBtn");
+const resetBtn = document.querySelector(".resetBtn");
 const winner = document.querySelector(".winner");
+const score = document.querySelector(".score");
 // A regEx to accept input only for rock paper and scissors:
 const inputReg = /^(Rock|Paper|Scissors)$/;
+let playerScore = 0;
+let computerScore = 0;
 
-button.addEventListener("click", () => {
+playBtn.addEventListener("click", () => {
   const userChoice = capitalize(prompt("Choose your weapon:", ""));
   //Check if input matches the regEx:
   if (!inputReg.test(userChoice)) {
@@ -11,11 +15,12 @@ button.addEventListener("click", () => {
     winner.textContent = "";
     return;
   }
-  game(userChoice, getComputerChoice());
+  playRound(userChoice, getComputerChoice());
 });
 
 function winCondition(winText) {
   winner.textContent = winText;
+  score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
 
   // Inserts a new element after a particular element:
   //   newEl.style.display="block"
@@ -36,31 +41,42 @@ function getComputerChoice() {
 }
 
 // Play a game round:
-function game(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
   if (playerSelection === "Paper") {
     if (computerSelection === "Rock") {
+      playerScore++;
       winCondition("Player won! Paper beats Rock!");
-    }
-    if (computerSelection === "Scissors") {
+    } else if (computerSelection === "Scissors") {
+      computerScore++;
       winCondition("Computer won! Scissors beat Paper!");
-    }
+    } else winCondition("tie!");
   }
   if (playerSelection === "Rock") {
     if (computerSelection === "Scissors") {
+      playerScore++;
       winCondition("Player won! Rock beats Scissors!");
-    }
-    if (computerSelection === "Paper") {
+    } else if (computerSelection === "Paper") {
+      computerScore++;
       winCondition("Computer won! Paper beats Rock!");
-    }
+    } else winCondition("tie!");
   }
   if (playerSelection === "Scissors") {
     if (computerSelection === "Paper") {
+      playerScore++;
       winCondition("Player won! Scissors beat Paper!");
-    }
-    if (computerSelection === "Rock") {
+    } else if (computerSelection === "Rock") {
+      computerScore++;
       winCondition("Computer won! Rock beats Scissors!");
-    }
+    } else winCondition("tie!");
   }
+}
+
+function game() {}
+
+function resetGame() {
+  winner.textContent = "";
+  score.textContent = "";
+  playerScore = computerScore = 0;
 }
 
 // Capitalize the first letter of your input:

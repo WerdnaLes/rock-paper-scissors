@@ -10,7 +10,7 @@ html {
 
 body {
   width: 500px;
-  height: 200px;
+  height: auto;
   margin: 50px auto;
   border: 1px solid black;
   display: flex;
@@ -21,11 +21,19 @@ body {
   background-color: antiquewhite;
 }
 
-.button {
+.playBtn {
   padding: 10px 20px;
   font-size: 1.2em;
   font-weight: bold;
   margin-top: 50px;
   margin-bottom: 25px;
   border-radius: 20px;
+}
+
+.resetBtn {
+  padding: 5px 15px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: 500;
 }
