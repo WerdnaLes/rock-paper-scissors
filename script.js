@@ -3,23 +3,36 @@ const resetBtn = document.querySelector(".resetBtn");
 const conditions = document.querySelector(".conditions");
 const header = document.querySelector(".btn-container-header");
 const score = document.querySelector(".score");
+const rock = document.querySelector(".rock");
+const weapon = document.querySelectorAll(".weapon");
 // A regEx to accept input only for rock paper and scissors:
 const inputReg = /^(Rock|Paper|Scissors)$/;
+const player = `You`;
+const computer = `Computer`;
 let playerScore = 0;
 let computerScore = 0;
 
 // Play button listener:
 playBtn.forEach((element) => {
-  element.addEventListener("click", (event) => {
+  element.addEventListener("click", () => {
     const userChoice = element.textContent;
-    // const userChoice = capitalize(prompt("Choose your weapon:", ""));
-    //Check if input matches the regEx:
-    // if (!inputReg.test(userChoice)) {
-    //   alert("You can only choose from 'Rock', 'Paper', 'Scissors'");
-    //   winner.textContent = "";
-    //   return;
-    // }
     playRound(userChoice, getComputerChoice());
+  });
+});
+
+// rock.addEventListener("click", () => {
+//   const value = rock.attributes.name.value;
+//   playRound(value, getComputerChoice());
+// });
+
+weapon.forEach((wpn) => {
+  wpn.addEventListener("click", () => {
+    wpn.classList.add("wpn-active");
+    setTimeout(() => {
+      wpn.classList.remove("wpn-active");
+    }, 200);
+    const value = wpn.attributes.name.value;
+    playRound(value, getComputerChoice());
   });
 });
 
@@ -34,15 +47,11 @@ function winCondition(winText) {
   if (isGameOver === 5) {
     // alert(winnerName());
     header.textContent = winnerName();
-    playBtn.forEach((element) => {
+    weapon.forEach((element) => {
       element.classList.add("gameOver");
     });
     resetBtn.classList.add("resetActive");
   }
-
-  // Inserts a new element after a particular element:
-  //   newEl.style.display="block"
-  //   button.parentNode.insertBefore(newEl, button.nextSibling)
 }
 
 // Get a random computer choice:
@@ -61,7 +70,7 @@ function getComputerChoice() {
 // Play a game round:
 function playRound(playerSelection, computerSelection) {
   //Display Player and computer choices:
-  conditions.innerHTML = `<strong>You:</strong> ${playerSelection}<br> <strong>Computer:</strong> ${computerSelection}`;
+  conditions.innerHTML = `<strong>${player}:</strong> ${playerSelection}<br> <strong>${computer}:</strong> ${computerSelection}`;
   if (playerSelection === "Paper") {
     if (computerSelection === "Rock") {
       playerScore++;
@@ -98,7 +107,7 @@ function resetGame() {
   conditions.textContent = "";
   playerScore = computerScore = 0;
 
-  playBtn.forEach((element) => {
+  weapon.forEach((element) => {
     element.classList.remove("gameOver");
   });
   resetBtn.classList.remove("resetActive");
@@ -113,8 +122,8 @@ function capitalize(str) {
 // Get a winner if the score reached 5:
 function winnerName() {
   if (playerScore > computerScore) {
-    return "You won!";
+    return `${player} won!`;
   } else {
-    return "Computer won!";
+    return `${computer} won`;
   }
 }
