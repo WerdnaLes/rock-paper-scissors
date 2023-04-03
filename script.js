@@ -5,9 +5,14 @@ const score = document.querySelector(".score-container");
 const weapon = document.querySelectorAll(".weapon");
 const playerChoice = document.querySelector(".player");
 const computerChoice = document.querySelector(".computer");
+const footerText = document.querySelector(".copyright");
 
 let playerScore = 0;
 let computerScore = 0;
+
+// Display a current year for the footer text:
+const year = new Date().getFullYear();
+footerText.innerHTML = `Copyright © ${year} <a class="copyright-link" href="https://github.com/WerdnaLes">Werdnales</a>`;
 
 // Event listener for weapon images:
 weapon.forEach((wpn) => {
