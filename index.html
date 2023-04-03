@@ -15,23 +15,32 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="header">
+    <header class="header">
       <h1>Rock-Paper-Scissors</h1>
-    </div>
+    </header>
     <div class="game">
-      <h1 class="btn-container-header winner">Choose Your Weapon:</h1>
-      <div class="btn-container">
-        <img class="weapon rock" name="Rock" src="./assets/rock.png" />
-        <img class="weapon rock" name="Paper" src="./assets/paper.png" />
-        <img class="weapon rock" name="Scissors" src="./assets/scissors.png" />
-        <!-- <button class="button playBtn" type="button">Rock</button> -->
-        <!-- <button class="button playBtn" type="button">Paper</button>
-        <button class="button playBtn" type="button">Scissors</button> -->
+      <h1 class="btn-container-header">Choose Your Weapon:</h1>
+      <div class="weapon-container">
+        <img class="weapon rock" name="rock" src="./assets/rock.png" />
+        <img class="weapon paper" name="paper" src="./assets/paper.png" />
+        <img class="weapon scissors" name="scissors" src="./assets/scissors.png" />
       </div>
-      <div class="game-content-container">
-        <p class="conditions border"></p>
-        <p class="score"></p>
-      </div>
+        <div class="score-container">
+          <div class="score player">
+            <label for="player-weapon">You: 0</label>
+            <img class="weapon-image" name="player-weapon" src="./assets/qstn-mark.png" alt="" />
+          </div>
+          <div class="score computer">
+            <label for="player-weapon">Computer: 0</label>
+            <img
+              class="weapon-image"
+              name="comp-wpn"
+              src="./assets/qstn-mark.png"
+              alt=""
+            />
+          </div>
+        </div>
+      
 
       <div class="btn-container no-border">
         <button class="button resetBtn">Reset game</button>
