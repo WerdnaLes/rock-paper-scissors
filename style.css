@@ -6,7 +6,6 @@
 * {
   box-sizing: border-box;
   font-family: "Alkatra", cursive, sans-serif;
-  /* border: 1px solid red; */
 }
 
 html {
@@ -18,8 +17,6 @@ body {
   color: var(--white);
   margin: 0;
   padding: 0;
-  /* height: 100vh; */
-  /* background: linear-gradient(#e66465, #9198e5); */
   background-color: #373b43;
 }
 
@@ -130,7 +127,6 @@ body {
 }
 
 .gameOver {
-  /* display: none; */
   pointer-events: none;
 }
 
