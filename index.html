@@ -13,40 +13,45 @@
       rel="stylesheet"
     />
     <title>Document</title>
+    <script src="./script.js" defer></script>
   </head>
   <body>
     <header class="header">
       <h1>Rock-Paper-Scissors</h1>
     </header>
     <div class="game">
-      <h1 class="btn-container-header">Choose Your Weapon:</h1>
+      <h1 class="weapon-container-header">Choose Your Weapon:</h1>
       <div class="weapon-container">
         <img class="weapon rock" name="rock" src="./assets/rock.png" />
         <img class="weapon paper" name="paper" src="./assets/paper.png" />
-        <img class="weapon scissors" name="scissors" src="./assets/scissors.png" />
+        <img
+          class="weapon scissors"
+          name="scissors"
+          src="./assets/scissors.png"
+        />
       </div>
-        <div class="score-container">
-          <div class="score player">
-            <label for="player-weapon">You: 0</label>
-            <img class="weapon-image" name="player-weapon" src="./assets/qstn-mark.png" alt="" />
-          </div>
-          <div class="score computer">
-            <label for="player-weapon">Computer: 0</label>
-            <img
-              class="weapon-image"
-              name="comp-wpn"
-              src="./assets/qstn-mark.png"
-              alt=""
-            />
-          </div>
+      <div class="score-container">
+        <div class="score player">
+          <label for="player-weapon">You: 0</label>
+          <img
+            class="weapon-image"
+            name="player-weapon"
+            src="./assets/qstn-mark.png"
+          />
         </div>
-      
+        <div class="score computer">
+          <label for="player-weapon">Computer: 0</label>
+          <img
+            class="weapon-image"
+            name="comp-wpn"
+            src="./assets/qstn-mark.png"
+          />
+        </div>
+      </div>
 
-      <div class="btn-container no-border">
+      <div class="btn-container">
         <button class="button resetBtn">Reset game</button>
       </div>
     </div>
-
-    <script src="./script.js"></script>
   </body>
 </html>
