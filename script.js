@@ -12,7 +12,7 @@ let computerScore = 0;
 
 // Display a current year for the footer text:
 const year = new Date().getFullYear();
-footerText.innerHTML = `Copyright © ${year} <a class="copyright-link" href="https://github.com/WerdnaLes">Werdnales</a>`;
+footerText.innerHTML = `Copyright © ${year} <a class="copyright-link" href="https://github.com/WerdnaLes" target="_blank" >Werdnales</a>`;
 
 // Event listener for weapon images:
 weapon.forEach((wpn) => {
