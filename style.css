@@ -23,17 +23,25 @@ body {
   margin: 0;
   padding: 0;
   background-color: #373b43;
+  height: 100dvh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
 }
 
 /* Header */
 .header {
-  text-align: center;
-  border: 3px solid black;
-  margin-bottom: 2rem;
+  width: 100%;
   background-color: var(--header-color);
 }
 
 .header h1 {
+  text-align: center;
   font-size: 3em;
   margin: 0;
 }
@@ -44,8 +52,6 @@ body {
   display: flex;
   flex-direction: column;
   width: 800px;
-  height: auto;
-  margin: 0 auto 1rem;
   border-radius: 20px;
 }
 
@@ -67,8 +73,6 @@ body {
 }
 
 .weapon {
-  height: 20vh;
-  width: auto;
   transition: all 0.2s ease;
 }
 
@@ -84,9 +88,9 @@ body {
 .score-container {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  height: fit-content;
+  height: 200px;
   border-bottom: 2px solid black;
   margin-bottom: 20px;
   padding-bottom: 20px;
@@ -96,12 +100,13 @@ body {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
-  flex: 1;
+  flex: 0 1 140px;
   gap: 10px;
 }
 
 .weapon-image {
-  height: 14vh;
+  height: 12vh;
+  object-fit: fill;
 }
 
 /* Reset game */
@@ -152,4 +157,67 @@ footer {
 
 .copyright-link:hover {
   color: var(--header-color);
+}
+
+@media only screen and (max-width: 815px) {
+  .game {
+    width: 600px;
+  }
+
+  .header h1 {
+    font-size: 2.5rem;
+  }
+
+  .weapon-container-header {
+    font-size: 1.5rem;
+  }
+
+  footer h2.copyright {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 525px) {
+  .game {
+    width: 450px;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .weapon-container-header {
+    font-size: 1.2rem;
+  }
+
+  label {
+    font-size: 0.9rem;
+  }
+
+  .weapon-container {
+    padding: 0 15px;
+    gap: 5px;
+  }
+
+  .weapon {
+    overflow: hidden;
+    /* width: 70%; */
+    object-fit: cover;
+  }
+
+  .weapon-image {
+    height: 10vh;
+  }
+
+  footer h2.copyright {
+    font-size: 0.8rem;
+  }
+
+  .resetBtn {
+    font-size: 1.2rem;
+  }
+
+  .score-container {
+    height: 140px;
+  }
 }
