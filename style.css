@@ -71,7 +71,7 @@ main {
   align-items: center;
   padding: 15px 0;
   border-bottom: 2px solid black;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .weapon {
@@ -96,7 +96,7 @@ main {
   height: 200px;
   border-bottom: 2px solid black;
   margin-bottom: 20px;
-  padding-bottom: 20px;
+  padding: 10px;
 }
 
 .score {
@@ -200,8 +200,7 @@ footer {
   }
 
   .weapon-container {
-    padding: 0 15px;
-    gap: 5px;
+    height: 150px;
   }
 
   .weapon {
@@ -211,7 +210,7 @@ footer {
   }
 
   .weapon-image {
-    height: 10vh;
+    /* height: 10vh; */
   }
 
   footer h2.copyright {
@@ -233,21 +232,22 @@ footer {
   }
 
   .weapon-container {
-    height: 100px;
+    height: 120px;
   }
   .score-container {
     gap: 0;
   }
 
-  footer h2.copyright {
-    font-size: 0.8rem;
-  }
-
-  .resetBtn {
-    font-size: 1.2rem;
-  }
-
   .score-container {
-    height: 120px;
+    height: 110px;
+    margin: 0;
+  }
+
+  .btn-container{
+    height: 90px;
+    margin: 0;
+  }
+  .resetBtn{
+    font-size: 0.9rem;
   }
 }
