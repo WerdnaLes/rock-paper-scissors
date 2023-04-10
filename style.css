@@ -182,7 +182,7 @@ footer {
   }
 }
 
-@media only screen and (max-width: 525px) {
+@media only screen and (max-width: 600px) {
   .game {
     width: 450px;
   }
@@ -227,7 +227,7 @@ footer {
   }
 }
 
-@media only screen and (max-width: 445px) {
+@media only screen and (max-width: 450px) {
   .game {
     width: 350px;
   }
