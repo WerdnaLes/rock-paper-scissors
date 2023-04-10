@@ -11,6 +11,7 @@
 html {
   margin: 0;
   padding: 0;
+  user-select: none;
 }
 
 h2 {
@@ -73,6 +74,7 @@ main {
 }
 
 .weapon {
+  height: 100%;
   transition: all 0.2s ease;
 }
 
@@ -97,16 +99,18 @@ main {
 }
 
 .score {
+  height: 100%;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
-  flex: 0 1 140px;
-  gap: 10px;
+  /* flex: 0 1 140px; */
+  column-gap: 10px;
 }
 
 .weapon-image {
-  height: 12vh;
-  object-fit: fill;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 /* Reset game */
@@ -219,5 +223,30 @@ footer {
 
   .score-container {
     height: 140px;
+  }
+}
+
+@media only screen and (max-width: 445px) {
+  .game {
+    width: 350px;
+  }
+
+  .weapon-container {
+    height: 100px;
+  }
+  .score-container {
+    gap: 0;
+  }
+
+  footer h2.copyright {
+    font-size: 0.8rem;
+  }
+
+  .resetBtn {
+    font-size: 1.2rem;
+  }
+
+  .score-container {
+    height: 120px;
   }
 }
